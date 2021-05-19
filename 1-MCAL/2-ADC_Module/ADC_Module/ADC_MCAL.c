@@ -95,7 +95,7 @@ void ADC_Init(void)
 	#if			ADC_INTERRUPT_STATUS	==			ADC_INERRUPT_ENABLE
 	SET_BIT(ADCSRA, 3);
 	
-	#elif		ADC_INTERRUPT_STATUS	==			ADC_INERRUPT_ENABLE
+	#elif		ADC_INTERRUPT_STATUS	==			ADC_INERRUPT_DISABLE
 	CLR_BIT(ADCSRA, 3);
 	#endif
 	
@@ -105,7 +105,7 @@ void ADC_Init(void)
 
 void ADC_Read(uint16* value)
 {
-	SET_BIT(ADCSRA, 1);
+	SET_BIT(ADCSRA, 6);
 	while(GET_BIT(ADCSRA, 4)==0);
 	*value = ADC_FINAL;
 }

@@ -41,9 +41,9 @@
 
 #define		ADMUX		(*(volatile uint8*)(0x27))
 #define		ADCSRA		(*(volatile uint8*)(0x26))
+#define		SFIOR		(*(volatile uint8*)(0x50))
 #define		ADCH		(*(volatile uint8*)(0x25))
 #define		ADCL		(*(volatile uint8*)(0x24))
-#define		SFIOR		(*(volatile uint8*)(0x50))
 #define		ADC_FINAL	(*(volatile uint16*)(0x24))
 
 

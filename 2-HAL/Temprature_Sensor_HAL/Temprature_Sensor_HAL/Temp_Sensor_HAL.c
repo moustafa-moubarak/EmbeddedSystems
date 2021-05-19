@@ -24,7 +24,7 @@ void TempSensor_Read(uint16* val)
 	
 	Vin = (Digital_out * 5000)/1024;
 	
-	//LM35 Temprature slope is 10mv/degree celsius
+	//LM35 Temprature slope is 10mv/degree Celsius
 	Temp = Vin / 10;
 	*val = Temp;
 }
