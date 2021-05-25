@@ -25,15 +25,24 @@
 #define		TIMER0_PRESCALER_256		3
 #define		TIMER0_PRESCALER_1024		4
 
+#define		TIMER1_NO_PRESCALLING		0
+#define		TIMER1_PRESCALER_8			1
+#define		TIMER1_PRESCALER_64			2
+#define		TIMER1_PRESCALER_256		3
+#define		TIMER1_PRESCALER_1024		4
 			
+#define		Timer0						0
+#define		Timer1						1
 
-void Timer0_Init(void);
 
-void Timer0_SetDelay(uint32 Delay_Ms);
+void Timer_Init(uint8 Timer);
 
-void Timer0_Start(void);
+void Timer_Start(uint8 Timer);
 
-void Timer0_Stop(void);
+void Timer_Stop(uint8 Timer);
 
+void Timer_SetDelay(uint8 Timer, uint32 Delay_Ms);
+
+Set_CallBack(uint8 Timer,void(* p)(void));
 
 #endif /* TIMER_H_ */

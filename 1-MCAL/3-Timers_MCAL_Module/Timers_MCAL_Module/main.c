@@ -7,22 +7,27 @@
 
 #include "Timer.h"
 #include "LED_HAL.h"
-#include <avr/interrupt.h>
 
-extern uint32	NUM_OVF	;
-extern uint8	INIT_VALUE;
+
+extern uint32	NUM_OVF_0	;
+extern uint8	INIT_VALUE_0 ;
+
+extern uint32	NUM_OVF_1	;
+extern uint32	INIT_VALUE_1 ;
 
 int main(void)
 {
 	LED0_Init();
-	Timer0_Init();
-	Timer0_SetDelay(2000); 
-	Timer0_Start();
+	Timer_Init(Timer0);
+	Set_CallBack(Timer0, LED0_Toggle);
+	Timer_SetDelay(Timer0, 15); 
+	Timer_Start(Timer0);
     while (1) 
     {
     }
 }
 
+/*
 ISR(TIMER0_OVF_vect)
 {
 	static uint32 cnt = 0;
@@ -37,4 +42,5 @@ ISR(TIMER0_OVF_vect)
 	}
 	
 }
+*/
 
