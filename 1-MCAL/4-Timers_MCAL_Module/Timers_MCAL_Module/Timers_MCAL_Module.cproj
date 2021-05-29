@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
-    <ProjectGuid>dce6c7e3-ee26-4d79-826b-08594b9ad897</ProjectGuid>
+    <ProjectGuid>{dce6c7e3-ee26-4d79-826b-08594b9ad897}</ProjectGuid>
     <avrdevice>ATmega32</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
@@ -127,21 +127,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="DIO_MCAL.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="EXT_INT.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="EXT_INT.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="EXT_INT_Config.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="LED_HAL.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="LED_HAL.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">

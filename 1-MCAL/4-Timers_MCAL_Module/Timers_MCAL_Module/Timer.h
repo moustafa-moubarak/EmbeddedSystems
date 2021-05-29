@@ -12,11 +12,10 @@
 #include "BIT_Math.h"
 #include "MCU.h"
 #include "Timer_Config.h"
-#include "EXT_INT.h"
 #include "DIO_MCAL.h"
 
 #define		Normal				0
-#define		PC_PWM				1
+#define		PWM_M14				1
 #define		CTC					2
 #define		FAST_PWM			3
 
@@ -49,5 +48,7 @@ void Timer_SetDelay(uint8 Timer, uint32 Delay_Ms);
 Set_CallBack(uint8 Timer,void(* p)(void));
 
 void PWM_Generate(uint8 Timer,uint16 Duty_Cycle);
+
+void PWM_Freq_Generate(uint16 Freq);
 
 #endif /* TIMER_H_ */

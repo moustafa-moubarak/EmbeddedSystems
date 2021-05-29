@@ -25,7 +25,7 @@ void Timer_Init(uint8 Timer)
 				CLR_BIT(TCCR0, 3);
 				CLR_BIT(TCCR0, 6);
 				//Enable Global Interrupt
-				Set_GlobalInterrupt();
+				SET_BIT(SREG, 7);
 				//Enable Overflow Interrupt
 				SET_BIT(TIMSK, 0);
 			 
@@ -33,7 +33,7 @@ void Timer_Init(uint8 Timer)
 				SET_BIT(TCCR0, 3);
 				CLR_BIT(TCCR0, 6);
 				//Enable Global Interrupt
-				Set_GlobalInterrupt();
+				SET_BIT(SREG, 7);
 				//Enable Output Compare Match Interrupt
 				SET_BIT(TIMSK, 1);
 			
@@ -61,7 +61,7 @@ void Timer_Init(uint8 Timer)
 				CLR_BIT(TCCR1B,3);
 				CLR_BIT(TCCR1B,4);			
 				//Enable Global Interrupt
-				Set_GlobalInterrupt();
+				SET_BIT(SREG, 7);
 				//Enable Overflow Interrupt
 				SET_BIT(TIMSK, 2);
 			
@@ -71,7 +71,7 @@ void Timer_Init(uint8 Timer)
 				SET_BIT(TCCR1B,3);
 				CLR_BIT(TCCR1B,4);
 				//Enable Global Interrupt
-				Set_GlobalInterrupt();
+				SET_BIT(SREG, 7);
 				//Enable Output Compare Match Interrupt
 				SET_BIT(TIMSK, 4);
 				
@@ -81,7 +81,7 @@ void Timer_Init(uint8 Timer)
 				CLR_BIT(TCCR1A,1);
 				SET_BIT(TCCR1B,3);
 				CLR_BIT(TCCR1B,4);
-				// OC0 Pin Set to Output
+				// OCR1A Pin Set to Output
 				DIO_SetPINDir(DIO_PORTD, DIO_PIN5, DIO_PIN_OUTPUT);
 				//Wave type Mode
 				#if		Timer1_PWM_WaveType				==		Non_Inverted
@@ -91,6 +91,21 @@ void Timer_Init(uint8 Timer)
 					SET_BIT(TCCR1A, 6);
 					SET_BIT(TCCR1A, 7);
 				#endif
+			#elif	TIMER1_WAVEFORM_GEN_Mode		==		PWM_M14
+				//Mode 14 Fast PWM with ICR
+				CLR_BIT(TCCR1A,0);
+				SET_BIT(TCCR1A,1);
+				SET_BIT(TCCR1B,3);
+				SET_BIT(TCCR1B,4);
+				// OCR1A Pin Set to Output
+				DIO_SetPINDir(DIO_PORTD, DIO_PIN5, DIO_PIN_OUTPUT);
+					#if		Timer1_PWM_WaveType				==		Non_Inverted
+					CLR_BIT(TCCR1A, 6);
+					SET_BIT(TCCR1A, 7);
+					#elif	Timer1_PWM_WaveType				==		Inverted
+					SET_BIT(TCCR1A, 6);
+					SET_BIT(TCCR1A, 7);
+					#endif
 			#endif
 			break;
 			
@@ -255,6 +270,11 @@ void Timer_SetDelay(uint8 Timer, uint32 Delay_Ms)
 			default:
 			break;
 		}
+}
+
+void PWM_Freq_Generate(uint16 Freq)
+{
+	ICR1 = (16000000/(PRESCALER_FACTOR_T1*Freq));
 }
 
 void PWM_Generate(uint8 Timer,uint16 Duty_Cycle)

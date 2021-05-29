@@ -6,7 +6,6 @@
  */ 
 
 #include "Timer.h"
-#include "LED_HAL.h"
 
 
 extern uint32	NUM_OVF_0	;
@@ -17,6 +16,11 @@ extern uint32	INIT_VALUE_1 ;
 
 int main(void)
 {	
+	Timer_Init(Timer1);
+	PWM_Freq_Generate(50);
+	Timer_Start(Timer1);
+	PWM_Generate(Timer1,7.5);
+	
     while (1) 
     {
     }

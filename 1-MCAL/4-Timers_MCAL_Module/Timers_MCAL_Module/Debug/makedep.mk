@@ -4,10 +4,6 @@
 
 DIO_MCAL.c
 
-EXT_INT.c
-
-LED_HAL.c
-
 main.c
 
 Timer.c
