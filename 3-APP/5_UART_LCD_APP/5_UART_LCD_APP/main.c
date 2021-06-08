@@ -10,10 +10,11 @@
 
 int main(void)
 {
+	uint8 data = 0;
 	LCD_Init();
 	UART_Init();
 	
-	uint8 data = 0;
+	
 	
  
     while (1) 
